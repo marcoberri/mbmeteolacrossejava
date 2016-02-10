@@ -1,0 +1,31 @@
+@CHARSET "UTF-8";
+
+.btn-primary {
+  background-color: #de1717;
+  border-color: #f25136;
+}
+
+@media (max-width: 767px) {
+  .col-xs-3 { width: 48%; margin-bottom: 30px; }
+}
+
+@media (max-width: 380px) {
+  .col-xs-3 { width: 100%; }
+}
+
+
+.social .fa-facebook:hover {
+    color: #4060A5;
+}
+
+.social .fa-twitter:hover {
+    color: #00ABE3;
+}
+
+.social .fa-google-plus:hover {
+    color: #e64522;
+}
+
+.social .fa-linkedin:hover {
+    color: #0094BC;
+}

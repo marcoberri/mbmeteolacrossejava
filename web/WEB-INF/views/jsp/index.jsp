@@ -10,61 +10,180 @@
     <meta name="author" content="marco berri marcoberri@gmail.com">
     <title>Meteo Station Farnese A1 - Santhià (VC)</title>
     <link href="${pageContext.request.contextPath}/resources/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
-
+	<link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet">
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
   </head>
   <body>
 
     
-
- <nav class="navbar navbar-inverse navbar-fixed-top">
-
+     	
+    <div class="navbar-wrapper">
       <div class="container">
-
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" style="float:left;">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="http://meteo.marcoberri.it">Meteo Farnese A1 - Santhi&agrave; (VC)</a>
+        <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">Meteo Station Farnese A1</a>
+            </div>
+            <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="${pageContext.request.contextPath}/">Home</a></li>
+                <li><a href="#24h">24 H</a></li>
+                <li><a href="#7d">7 Day</a></li>
+                <li><a href="#30d">30 Day</a></li>
+               <li><a href="#" onClick="$('#statusModal').modal('show')">Status</a></li>
+                <li><a href="#" onClick="$('#aboutModal').modal('show')">About</a></li>
+                <!-- li><a href="https://www.facebook.com/DoctorGrooveVercelli/timeline" target="_new"><i class="fa fa-lg fa-facebook"></i></a></li>
+                <li><a href="https://plus.google.com/u/0/b/115354838498053576920/+DoctorgrooveItSilvia/posts"  target="_new"><i class="fa fa-lg fa-google-plus"></i></a></li>
+                <li><a href="https://www.youtube.com/channel/UCSkNTgwc9B7tWOnp-0vDfBQ"  target="_new"><i class="fa fa-lg fa-youtube-square"></i></a></li-->
+              </ul>
+            </div>
+          </div>
         </div>
 
- <div id="navbar" class="navbar-collapse collapse navbar-left">
-
-          <ul class="nav navbar-nav">
-	    <li><a href="#24">24 H</a></li>	
-	    <li><a href="#7day">7 Day</a></li>	
-	    <li><a href="#30day">30 Day</a></li>	
-	    <!--li><a href="/365day">365 Day</a></li-->	
-            <li><a href="#" onClick="$('#statusModal').modal('show')">Status</a></li>
-            <li><a href="#" onClick="$('#aboutModal').modal('show')">About</a></li>
-            <!--li><a href="#contact">Contact</a></li-->
-          </ul>
-        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    
+   <div class="container marketing">
 
 
+
+<section id="24h">
+
+      <!-- START THE FEATURETTES -->
+      <div class="row featurette">
+      
+      	<div class="span4"></div>
+        	<div class="span4">
+        		<h2 class="center-block">Last 24 Hours</h2>
+        	</div>
+        <div class="span4"></div>
+      </div>
+      
+      <div class="row featurette">
+        <div class="col-md-6">
+			        
+		</div>
+        
+        
+        <div class="col-md-6">
+			<img style="margin-top:5px;" class="featurette-image img-responsive" src="http://meteo.marcoberri.it/charts/t24.jpg" alt=""/>        
+		</div>
       </div>
 
-    </nav>
+
+
+      <div class="row featurette">
+        <div class="col-md-6">
+			       <img style="margin-top:5px;" class="featurette-image img-responsive" src="http://meteo.marcoberri.it/charts/t24.jpg" alt=""/>
+		</div>
+        
+        
+        <div class="col-md-6">
+			<img style="margin-top:5px;" class="featurette-image img-responsive" src="http://meteo.marcoberri.it/charts/t24.jpg" alt=""/>        
+		</div>
+      </div>
+
+
+      <div class="row featurette">
+        <div class="col-md-6">
+			       <img style="margin-top:5px;" class="featurette-image img-responsive" src="http://meteo.marcoberri.it/charts/t24.jpg" alt=""/>
+		</div>
+        
+        
+        <div class="col-md-6">
+			<img style="margin-top:5px;" class="featurette-image img-responsive" src="http://meteo.marcoberri.it/charts/t24.jpg" alt=""/>        
+		</div>
+      </div>
+      
+	<p class="pull-right"><a href="#" title="Torna all'inizio della pagina">Torna su</a></p>
+
+</section>
+
+
+
+ <hr class="featurette-divider">
 
 
 
 
-      <hr>
 
-    <footer class="footer">
+
+<section id="7d">
+
+      <!-- START THE FEATURETTES -->
+      <div class="row featurette">
+      
+      	<div class="span4"></div>
+        	<div class="span4">
+        		<h2 class="center-block">Last 24 Hours</h2>
+        	</div>
+        <div class="span4"></div>
+      </div>
+      
+      <div class="row featurette">
+        <div class="col-md-6">
+			        
+		</div>
+        
+        
+        <div class="col-md-6">
+			<img style="margin-top:5px;" class="featurette-image img-responsive" src="http://meteo.marcoberri.it/charts/t24.jpg" alt=""/>        
+		</div>
+      </div>
+
+
+
+      <div class="row featurette">
+        <div class="col-md-6">
+			       <img style="margin-top:5px;" class="featurette-image img-responsive" src="http://meteo.marcoberri.it/charts/t24.jpg" alt=""/>
+		</div>
+        
+        
+        <div class="col-md-6">
+			<img style="margin-top:5px;" class="featurette-image img-responsive" src="http://meteo.marcoberri.it/charts/t24.jpg" alt=""/>        
+		</div>
+      </div>
+
+
+      <div class="row featurette">
+        <div class="col-md-6">
+			       <img style="margin-top:5px;" class="featurette-image img-responsive" src="http://meteo.marcoberri.it/charts/t24.jpg" alt=""/>
+		</div>
+        
+        
+        <div class="col-md-6">
+			<img style="margin-top:5px;" class="featurette-image img-responsive" src="http://meteo.marcoberri.it/charts/t24.jpg" alt=""/>        
+		</div>
+      </div>
+      
+	<p class="pull-right"><a href="#" title="Torna all'inizio della pagina">Torna su</a></p>
+
+</section>
+
+
+
+ <hr class="featurette-divider">
+
+
+
+    <footer>
       <div class="container">
         <p class="text-muted"><a href="http://tecnicume.blogspot.it">&copy; Marco Berri - 2016</a></p>
       </div>
     </footer>
     
     
-
+</div>
 
 
 
@@ -87,7 +206,7 @@
         <strong>Software</strong><br/>
         Server: Ubuntu 14.10 on Linode.com<br/>
         Source Service to send data from Raspeberry PI to Site : <a href="https://github.com/marcoberri/mbmeteolacrossecaputre">github</a> in Java<br/>
-        Source this site: <a href="https://github.com/marcoberri/mbmeteolacrosse">github</a> in <a href="https://nodejs.org/">NodeJS</a><br/>
+        Source this site: <a href="https://github.com/marcoberri/mbmeteolacrossejava">github</a> in <a href="https://spring.io/">Spring Framework</a><br/>
         Source Batch to generate graph in crontab <a href="https://github.com/marcoberri/mbmeteolacrossegeneratechart">github</a> in Java<br/>
         Data stored in <a href="https://www.mongodb.org/">MongoDB</a> <br/>
       </div>

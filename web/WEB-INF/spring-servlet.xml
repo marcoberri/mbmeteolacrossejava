@@ -40,15 +40,14 @@
 
 
 	<mongo:repositories base-package="it.marcoberri.repositories"/>
+	
+	<mongo:mongo host="mongoserver" port="57017"/>
 
-	<bean id="mongo" class="org.springframework.data.mongodb.core.MongoFactoryBean">
-		<property name="host" value="mongoserver"  />
-		<property name="port" value="57017"  />
-	</bean>
+	<mongo:db-factory dbname="CLARINET_LOGGER_ECU" mongo-ref="mongo"/>
 
 	<!-- MongoTemplate for connecting and quering the documents in the database -->
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
-		<constructor-arg name="mongo" ref="mongo" />
+		<constructor-arg ref="mongo"/>
 		<constructor-arg name="databaseName" value="CLARINET_LOGGER_ECU" />
 	</bean>
 

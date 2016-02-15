@@ -17,9 +17,7 @@
     <![endif]-->
     
   </head>
-  <body>
-
-    
+  <body>  
      	
     <div class="navbar-wrapper">
       <div class="container">
@@ -71,6 +69,62 @@
       
       <div class="row featurette">
         <div class="col-md-6">
+			        
+		<p>
+<dl class="dl-horizontal">
+  <dt>TS:</dt>
+  <dd>${last.ts}</dd>
+</dl>
+<dl class="dl-horizontal">
+  <dt>Temperature:</dt>
+  <dd>${last.t1}&deg;</dd>
+</dl>
+
+<!-- dl class="dl-horizontal">
+  <dt>Temperature Max/Min:</dt>
+  <dd> 15.1&deg; / 0.4&deg; (24H)</dd>
+</dl-->
+
+<dl class="dl-horizontal">
+  <dt>Humidity:</dt>
+  <dd>${last.h1}%</dd>
+</dl>
+
+
+<!-- dl class="dl-horizontal">
+  <dt>Humidity Max/Min:</dt>
+  <dd> 83% / 64% (24H)</dd>
+</dl-->
+
+<dl class="dl-horizontal">
+  <dt>Pressure:</dt>
+  <dd>${last.press} mBar</dd>
+</dl>
+
+<!-- dl class="dl-horizontal">
+  <dt>Pressure Max/Min:</dt>
+  <dd> 996.1 mBar / 990.1 mBar (24H)</dd>
+</dl-->
+
+<dl class="dl-horizontal">
+  <dt>Wind direction:</dt>
+  <dd>${last.wd}</dd>
+</dl>
+
+<dl class="dl-horizontal">
+  <dt>Wind speed:</dt>
+  <dd>${last.ws} m/s</dd>
+</dl>
+
+<dl class="dl-horizontal">
+  <dt>Windchill temperature:</dt>
+  <dd>${last.wc} &deg;</dd>
+</dl>
+
+
+
+                                    </p>	        
+			        
 			        
 		</div>
         

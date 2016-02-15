@@ -25,6 +25,8 @@
 
 
 
+    <context:property-placeholder location="classpath:mongo.properties" />
+ 
 	<context:component-scan base-package="it.marcoberri" />
 	 <context:annotation-config/>
 
@@ -39,16 +41,27 @@
 	</bean>
 
 
+	<!-- Configure bean to convert JSON to POJO and vice versa -->
+	<bean id="jsonMessageConverter"
+		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+		<property name="supportedMediaTypes" value="application/json" />
+		<property name="objectMapper">
+			<bean class="com.fasterxml.jackson.databind.ObjectMapper">
+				<property name="serializationInclusion" value="NON_NULL" />
+			</bean>
+		</property>
+	</bean>
+	
 	<mongo:repositories base-package="it.marcoberri.repositories"/>
 	
-	<mongo:mongo host="mongoserver" port="57017"/>
+	<mongo:mongo host="${mongo.db.server}" port="${mongo.db.port}"/>
 
-	<mongo:db-factory dbname="CLARINET_LOGGER_ECU" mongo-ref="mongo"/>
+	<mongo:db-factory dbname="${mongo.db.name}" mongo-ref="mongo"/>
 
 	<!-- MongoTemplate for connecting and quering the documents in the database -->
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
 		<constructor-arg ref="mongo"/>
-		<constructor-arg name="databaseName" value="CLARINET_LOGGER_ECU" />
+		<constructor-arg name="databaseName" value="${mongo.db.name}" />
 	</bean>
 
 	<mvc:resources mapping="/resources/**" location="/WEB-INF/views/resources/" />

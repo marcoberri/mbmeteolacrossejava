@@ -17,6 +17,8 @@
 		<mongo-java-driver-version>3.2.1</mongo-java-driver-version>
 		<spring-data-mongodb-version>1.8.2.RELEASE</spring-data-mongodb-version>
 		<spring-data-commons-version>1.11.2.RELEASE</spring-data-commons-version>
+		<spring-data-jpa-version>1.7.4.RELEASE</spring-data-jpa-version>
+		<org.codehaus.jackson.version>2.6.5</org.codehaus.jackson.version>
 	</properties>
 
 	<dependencies>
@@ -34,6 +36,13 @@
 			<artifactId>spring-data-mongodb</artifactId>
 			<version>${spring-data-mongodb-version}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>${spring-data-jpa-version}</version>
+		</dependency>
+
 
 		<dependency>
 			<groupId>org.springframework.data</groupId>
@@ -71,6 +80,22 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
 			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${org.codehaus.jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${org.codehaus.jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${org.codehaus.jackson.version}</version>
 		</dependency>
 
 

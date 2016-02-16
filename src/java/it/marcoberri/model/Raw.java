@@ -11,7 +11,16 @@ import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import it.marcpberri.helper.CustomObjectIdDeserializer;
+import it.marcpberri.helper.CustomObjectIdSerializer;
+
 @Document(collection = "rawdata")
+@JsonInclude(Include.NON_NULL)
 public class Raw implements Serializable {
 
 	/**
@@ -20,32 +29,34 @@ public class Raw implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@JsonSerialize( using=CustomObjectIdSerializer.class)
+	@JsonDeserialize(using= CustomObjectIdDeserializer.class)
 	private ObjectId id;
 	
 	@Field(value = "T0")
-	private float t0 = 0;
+	private Float t0;
 	@Field(value = "H0")
-	private float h0 = 0;
+	private Float h0;
 	@Field(value = "T1")
-	private float t1 = 0;
+	private Float t1;
 	@Field(value = "H1")
-	private float h1 = 0;
+	private Float h1;
 	@Field(value = "PRESS")
-	private float press = 0;
+	private Float press;
 	@Field(value = "FC")
-	private float fc = 0;
+	private Float fc;
 	@Field(value = "STORM")
-	private float storm = 0;
+	private Float storm;
 	@Field(value = "WD")
-	private float wd = 0;
+	private Float wd;
 	@Field(value = "WS")
-	private float ws = 0;
+	private Float ws;
 	@Field(value = "WG")
-	private float wg = 0;
+	private Float wg;
 	@Field(value = "WC")
-	private float wc = 0;
+	private Float wc;
 	@Field(value = "RC")
-	private float rc = 0;
+	private Float rc;
 
 	
 	@DateTimeFormat(iso=ISO.DATE_TIME)
@@ -53,127 +64,160 @@ public class Raw implements Serializable {
 
 	
 	@Indexed
-	private long tsMillis = 0;
+	private Long tsMillis;
+
 
 	public ObjectId getId() {
 		return id;
 	}
 
+
 	public void setId(ObjectId id) {
 		this.id = id;
 	}
 
-	public float getT0() {
+
+	public Float getT0() {
 		return t0;
 	}
 
-	public void setT0(float t0) {
+
+	public void setT0(Float t0) {
 		this.t0 = t0;
 	}
 
-	public float getH0() {
+
+	public Float getH0() {
 		return h0;
 	}
 
-	public void setH0(float h0) {
+
+	public void setH0(Float h0) {
 		this.h0 = h0;
 	}
 
-	public float getT1() {
+
+	public Float getT1() {
 		return t1;
 	}
 
-	public void setT1(float t1) {
+
+	public void setT1(Float t1) {
 		this.t1 = t1;
 	}
 
-	public float getH1() {
+
+	public Float getH1() {
 		return h1;
 	}
 
-	public void setH1(float h1) {
+
+	public void setH1(Float h1) {
 		this.h1 = h1;
 	}
 
-	public float getPress() {
+
+	public Float getPress() {
 		return press;
 	}
 
-	public void setPress(float press) {
+
+	public void setPress(Float press) {
 		this.press = press;
 	}
 
-	public float getFc() {
+
+	public Float getFc() {
 		return fc;
 	}
 
-	public void setFc(float fc) {
+
+	public void setFc(Float fc) {
 		this.fc = fc;
 	}
 
-	public float getStorm() {
+
+	public Float getStorm() {
 		return storm;
 	}
 
-	public void setStorm(float storm) {
+
+	public void setStorm(Float storm) {
 		this.storm = storm;
 	}
 
-	public float getWd() {
+
+	public Float getWd() {
 		return wd;
 	}
 
-	public void setWd(float wd) {
+
+	public void setWd(Float wd) {
 		this.wd = wd;
 	}
 
-	public float getWs() {
+
+	public Float getWs() {
 		return ws;
 	}
 
-	public void setWs(float ws) {
+
+	public void setWs(Float ws) {
 		this.ws = ws;
 	}
 
-	public float getWg() {
+
+	public Float getWg() {
 		return wg;
 	}
 
-	public void setWg(float wg) {
+
+	public void setWg(Float wg) {
 		this.wg = wg;
 	}
 
-	public float getWc() {
+
+	public Float getWc() {
 		return wc;
 	}
 
-	public void setWc(float wc) {
+
+	public void setWc(Float wc) {
 		this.wc = wc;
 	}
 
-	public float getRc() {
+
+	public Float getRc() {
 		return rc;
 	}
 
-	public void setRc(float rc) {
+
+	public void setRc(Float rc) {
 		this.rc = rc;
 	}
+
 
 	public Date getTs() {
 		return ts;
 	}
 
+
 	public void setTs(Date ts) {
 		this.ts = ts;
 	}
 
-	public long getTsMillis() {
+
+
+
+	public Long getTsMillis() {
 		return tsMillis;
 	}
 
-	public void setTsMillis(long tsMillis) {
+
+	public void setTsMillis(Long tsMillis) {
 		this.tsMillis = tsMillis;
 	}
+
 
 	@Override
 	public String toString() {
@@ -181,5 +225,7 @@ public class Raw implements Serializable {
 				+ ", fc=" + fc + ", storm=" + storm + ", wd=" + wd + ", ws=" + ws + ", wg=" + wg + ", wc=" + wc
 				+ ", rc=" + rc + ", ts=" + ts + ", tsMillis=" + tsMillis + "]";
 	}
+
+
 
 }

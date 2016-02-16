@@ -10,6 +10,8 @@
 	<url>http://meteo.marcoberri.it</url>
 
 	<properties>
+		<maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jdk.version>1.8</jdk.version>
 		<spring.version>4.2.4.RELEASE</spring.version>
 		<javax.servlet-api-version>3.1.0</javax.servlet-api-version>
@@ -19,9 +21,19 @@
 		<spring-data-commons-version>1.11.2.RELEASE</spring-data-commons-version>
 		<spring-data-jpa-version>1.7.4.RELEASE</spring-data-jpa-version>
 		<org.codehaus.jackson.version>2.6.5</org.codehaus.jackson.version>
+		<org.jfree-version>1.0.19</org.jfree-version>
 	</properties>
 
+
+
 	<dependencies>
+
+		<dependency>
+			<groupId>org.jfree</groupId>
+			<artifactId>jfreechart</artifactId>
+			<version>${org.jfree-version}</version>
+		</dependency>
+
 
 		<dependency>
 			<groupId>org.mongodb</groupId>

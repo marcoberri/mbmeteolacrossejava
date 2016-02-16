@@ -22,10 +22,8 @@ public class HomeController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String home(ModelMap model) {
-		final Page<Raw> raw = rawRepository.findAll(new PageRequest(0, 1, new Sort(Direction.DESC,"ts")));
-
-		//model.addAttribute("greeting", "Hello World from Spring 4 MVC");
-		model.addAttribute("last", raw.getContent().get(0));
+		final Raw rawLast = rawRepository.findFirstByOrderByTsDesc();
+		model.addAttribute("last", rawLast);
 
 		return "index";
 	}

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<appender name="consoleAppender" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-7p %d [%t] %c %x - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="fileAppender" class="org.apache.log4j.RollingFileAppender">
+		<param name="MaxFileSize" value="50000KB" />
+		<param name="Append" value="true" />
+		<param name="MaxBackupIndex" value="3" />
+		<param name="File" value="/tmp/meteo.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-7p %d [%t] %c %x - %m%n" />
+		</layout>
+	</appender>
+
+	<logger name="javabeat.net.log4j" additivity="false">
+		<level value="DEBUG" />
+		<appender-ref ref="fileAppender" />
+		<appender-ref ref="consoleAppender" />
+	</logger>
+
+	<root>
+		<level value="DEBUG" />
+		<appender-ref ref="fileAppender" />
+		<appender-ref ref="consoleAppender" />
+	</root>
+
+</log4j:configuration>

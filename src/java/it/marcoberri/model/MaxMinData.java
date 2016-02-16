@@ -7,8 +7,12 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 @Document(collection = "maxMinData")
-public class MaxMinData  implements Serializable {
+@JsonInclude(Include.NON_NULL)
+public class MaxMinData implements Serializable {
 
 	/**
 	 * 
@@ -17,7 +21,7 @@ public class MaxMinData  implements Serializable {
 
 	@Id
 	private String id;
-	
+
 	@Indexed
 	private String ts;
 

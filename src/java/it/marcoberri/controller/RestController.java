@@ -1,6 +1,5 @@
 package it.marcoberri.controller;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,18 +25,5 @@ public class RestController {
 	@Autowired
 	private RawRepository rawRepository;
 
-	@RequestMapping(value = "/T/{" + PathConstants.PARAM_FILTER_FROM_DAY
-			+ "}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	public List<Raw> getValues(@PathVariable(value = PathConstants.PARAM_FILTER_FROM_DAY) int dayFirst) {
-
-		final Page<Raw> rawLastList = rawRepository.findAll(new PageRequest(0, 1, new Sort(Direction.DESC, "ts")));
-		final Raw rawLast = rawLastList.getContent().get(0);
-
-		long fromDateMillis = rawLast.getTs().getTime() - (86400000 * dayFirst);
-
-		return rawRepository.findByTsGreaterThan(new Date(fromDateMillis), new Sort(Direction.ASC, "ts"));
-
-	}
 
 }

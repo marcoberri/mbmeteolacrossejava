@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-@Document(collection = "maxMinData")
+@Document(collection = "maxmindata")
 @JsonInclude(Include.NON_NULL)
 public class MaxMinData implements Serializable {
 
@@ -26,34 +26,34 @@ public class MaxMinData implements Serializable {
 	private String ts;
 
 	@Field(value = "T1MinDay")
-	private float t1MinDay = 0;
+	private Float t1MinDay;
 
 	@Field(value = "T1MaxDay")
-	private float t1MaxDay = 0;
+	private Float t1MaxDay;
 
 	@Field(value = "H1MinDay")
-	private float h1MinDay = 0;
+	private Float h1MinDay;
 
 	@Field(value = "H1MaxDay")
-	private float h1MaxDay = 0;
+	private Float h1MaxDay;
 
 	@Field(value = "PRESSMinDay")
-	private float pressMinDay = 0;
+	private Float pressMinDay;
 
 	@Field(value = "PRESSMaxDay")
-	private float pressMaxDay = 0;
+	private Float pressMaxDay;
 
 	@Field(value = "WCMinDay")
-	private float wcMinDay = 0;
+	private Float wcMinDay;
 
 	@Field(value = "WCMaxDay")
-	private float wcMaxDay = 0;
+	private Float wcMaxDay;
 
 	@Field(value = "WSMinDay")
-	private float wsMinDay = 0;
+	private Float wsMinDay;
 
 	@Field(value = "WSMaxDay")
-	private float wsMaxDay = 0;
+	private Float wsMaxDay;
 
 	public String getId() {
 		return id;
@@ -71,83 +71,83 @@ public class MaxMinData implements Serializable {
 		this.ts = ts;
 	}
 
-	public float getT1MinDay() {
+	public Float getT1MinDay() {
 		return t1MinDay;
 	}
 
-	public void setT1MinDay(float t1MinDay) {
+	public void setT1MinDay(Float t1MinDay) {
 		this.t1MinDay = t1MinDay;
 	}
 
-	public float getT1MaxDay() {
+	public Float getT1MaxDay() {
 		return t1MaxDay;
 	}
 
-	public void setT1MaxDay(float t1MaxDay) {
+	public void setT1MaxDay(Float t1MaxDay) {
 		this.t1MaxDay = t1MaxDay;
 	}
 
-	public float getH1MinDay() {
+	public Float getH1MinDay() {
 		return h1MinDay;
 	}
 
-	public void setH1MinDay(float h1MinDay) {
+	public void setH1MinDay(Float h1MinDay) {
 		this.h1MinDay = h1MinDay;
 	}
 
-	public float getH1MaxDay() {
+	public Float getH1MaxDay() {
 		return h1MaxDay;
 	}
 
-	public void setH1MaxDay(float h1MaxDay) {
+	public void setH1MaxDay(Float h1MaxDay) {
 		this.h1MaxDay = h1MaxDay;
 	}
 
-	public float getPressMinDay() {
+	public Float getPressMinDay() {
 		return pressMinDay;
 	}
 
-	public void setPressMinDay(float pressMinDay) {
+	public void setPressMinDay(Float pressMinDay) {
 		this.pressMinDay = pressMinDay;
 	}
 
-	public float getPressMaxDay() {
+	public Float getPressMaxDay() {
 		return pressMaxDay;
 	}
 
-	public void setPressMaxDay(float pressMaxDay) {
+	public void setPressMaxDay(Float pressMaxDay) {
 		this.pressMaxDay = pressMaxDay;
 	}
 
-	public float getWcMinDay() {
+	public Float getWcMinDay() {
 		return wcMinDay;
 	}
 
-	public void setWcMinDay(float wcMinDay) {
+	public void setWcMinDay(Float wcMinDay) {
 		this.wcMinDay = wcMinDay;
 	}
 
-	public float getWcMaxDay() {
+	public Float getWcMaxDay() {
 		return wcMaxDay;
 	}
 
-	public void setWcMaxDay(float wcMaxDay) {
+	public void setWcMaxDay(Float wcMaxDay) {
 		this.wcMaxDay = wcMaxDay;
 	}
 
-	public float getWsMinDay() {
+	public Float getWsMinDay() {
 		return wsMinDay;
 	}
 
-	public void setWsMinDay(float wsMinDay) {
+	public void setWsMinDay(Float wsMinDay) {
 		this.wsMinDay = wsMinDay;
 	}
 
-	public float getWsMaxDay() {
+	public Float getWsMaxDay() {
 		return wsMaxDay;
 	}
 
-	public void setWsMaxDay(float wsMaxDay) {
+	public void setWsMaxDay(Float wsMaxDay) {
 		this.wsMaxDay = wsMaxDay;
 	}
 
@@ -158,5 +158,6 @@ public class MaxMinData implements Serializable {
 				+ ", pressMaxDay=" + pressMaxDay + ", wcMinDay=" + wcMinDay + ", wcMaxDay=" + wcMaxDay + ", wsMinDay="
 				+ wsMinDay + ", wsMaxDay=" + wsMaxDay + "]";
 	}
+
 
 }

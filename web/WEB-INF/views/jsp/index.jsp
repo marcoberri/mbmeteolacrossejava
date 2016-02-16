@@ -38,11 +38,9 @@
                 <li><a href="#24h">24 H</a></li>
                 <li><a href="#7d">7 Day</a></li>
                 <li><a href="#30d">30 Day</a></li>
-               <li><a href="#" onClick="$('#statusModal').modal('show')">Status</a></li>
+                <li><a href="#365d">365 Day</a></li>
+                <li><a href="#" onClick="$('#statusModal').modal('show')">Status</a></li>
                 <li><a href="#" onClick="$('#aboutModal').modal('show')">About</a></li>
-                <!-- li><a href="https://www.facebook.com/DoctorGrooveVercelli/timeline" target="_new"><i class="fa fa-lg fa-facebook"></i></a></li>
-                <li><a href="https://plus.google.com/u/0/b/115354838498053576920/+DoctorgrooveItSilvia/posts"  target="_new"><i class="fa fa-lg fa-google-plus"></i></a></li>
-                <li><a href="https://www.youtube.com/channel/UCSkNTgwc9B7tWOnp-0vDfBQ"  target="_new"><i class="fa fa-lg fa-youtube-square"></i></a></li-->
               </ul>
             </div>
           </div>
@@ -71,66 +69,61 @@
         <div class="col-md-6">
 			        
 		<p>
-<dl class="dl-horizontal">
-  <dt>TS:</dt>
-  <dd>${last.ts}</dd>
-</dl>
-<dl class="dl-horizontal">
-  <dt>Temperature:</dt>
-  <dd>${last.t1}&deg;</dd>
-</dl>
-
-<!-- dl class="dl-horizontal">
-  <dt>Temperature Max/Min:</dt>
-  <dd> 15.1&deg; / 0.4&deg; (24H)</dd>
-</dl-->
-
-<dl class="dl-horizontal">
-  <dt>Humidity:</dt>
-  <dd>${last.h1}%</dd>
-</dl>
-
-
-<!-- dl class="dl-horizontal">
-  <dt>Humidity Max/Min:</dt>
-  <dd> 83% / 64% (24H)</dd>
-</dl-->
-
-<dl class="dl-horizontal">
-  <dt>Pressure:</dt>
-  <dd>${last.press} mBar</dd>
-</dl>
-
-<!-- dl class="dl-horizontal">
-  <dt>Pressure Max/Min:</dt>
-  <dd> 996.1 mBar / 990.1 mBar (24H)</dd>
-</dl-->
-
-<dl class="dl-horizontal">
-  <dt>Wind direction:</dt>
-  <dd>${last.wd}</dd>
-</dl>
-
-<dl class="dl-horizontal">
-  <dt>Wind speed:</dt>
-  <dd>${last.ws} m/s</dd>
-</dl>
-
-<dl class="dl-horizontal">
-  <dt>Windchill temperature:</dt>
-  <dd>${last.wc} &deg;</dd>
-</dl>
-
-
-
-                                    </p>	        
-			        
-			        
+			<dl class="dl-horizontal">
+			  <dt>TS:</dt>
+			  <dd>${last.ts}</dd>
+			</dl>
+			<dl class="dl-horizontal">
+			  <dt>Temperature:</dt>
+			  <dd>${last.t1}&deg;</dd>
+			</dl>
+			
+			<!-- dl class="dl-horizontal">
+			  <dt>Temperature Max/Min:</dt>
+			  <dd> 15.1&deg; / 0.4&deg; (24H)</dd>
+			</dl-->
+			
+			<dl class="dl-horizontal">
+			  <dt>Humidity:</dt>
+			  <dd>${last.h1}%</dd>
+			</dl>
+			
+			
+			<!-- dl class="dl-horizontal">
+			  <dt>Humidity Max/Min:</dt>
+			  <dd> 83% / 64% (24H)</dd>
+			</dl-->
+			
+			<dl class="dl-horizontal">
+			  <dt>Pressure:</dt>
+			  <dd>${last.press} mBar</dd>
+			</dl>
+			
+			<!-- dl class="dl-horizontal">
+			  <dt>Pressure Max/Min:</dt>
+			  <dd> 996.1 mBar / 990.1 mBar (24H)</dd>
+			</dl-->
+			
+			<dl class="dl-horizontal">
+			  <dt>Wind direction:</dt>
+			  <dd>${last.wd}</dd>
+			</dl>
+			
+			<dl class="dl-horizontal">
+			  <dt>Wind speed:</dt>
+			  <dd>${last.ws} m/s</dd>
+			</dl>
+			
+			<dl class="dl-horizontal">
+			  <dt>Windchill temperature:</dt>
+			  <dd>${last.wc} &deg;</dd>
+			</dl>
+        </p>	        
 		</div>
         
         
         <div class="col-md-6">
-			<img style="margin-top:5px;" class="featurette-image img-responsive" src="http://meteo.marcoberri.it/charts/t24.jpg" alt=""/>        
+			<img style="margin-top:5px;" class="featurette-image img-responsive" src="${pageContext.request.contextPath}/draw/T/1/700/500" alt="Temperature"/>        
 		</div>
       </div>
 
@@ -138,28 +131,28 @@
 
       <div class="row featurette">
         <div class="col-md-6">
-			       <img style="margin-top:5px;" class="featurette-image img-responsive" src="http://meteo.marcoberri.it/charts/t24.jpg" alt=""/>
+			       <img style="margin-top:5px;" class="featurette-image img-responsive" src="${pageContext.request.contextPath}/draw/H/1/700/500" alt="humidity"/>
 		</div>
         
         
         <div class="col-md-6">
-			<img style="margin-top:5px;" class="featurette-image img-responsive" src="http://meteo.marcoberri.it/charts/t24.jpg" alt=""/>        
+			<img style="margin-top:5px;" class="featurette-image img-responsive" src="${pageContext.request.contextPath}/draw/PRESS/1/700/500" alt="Pressure"/>        
 		</div>
       </div>
 
 
       <div class="row featurette">
         <div class="col-md-6">
-			       <img style="margin-top:5px;" class="featurette-image img-responsive" src="http://meteo.marcoberri.it/charts/t24.jpg" alt=""/>
+			       <img style="margin-top:5px;" class="featurette-image img-responsive" src="${pageContext.request.contextPath}/draw/WC/1/700/500" alt="Wind Chill"/>
 		</div>
         
         
         <div class="col-md-6">
-			<img style="margin-top:5px;" class="featurette-image img-responsive" src="http://meteo.marcoberri.it/charts/t24.jpg" alt=""/>        
+			<img style="margin-top:5px;" class="featurette-image img-responsive" src="${pageContext.request.contextPath}/draw/WS/1/700/500" alt=""/>        
 		</div>
       </div>
       
-	<p class="pull-right"><a href="#" title="Torna all'inizio della pagina">Torna su</a></p>
+	<p class="pull-right"><a href="#" title="Top Page">Top</a></p>
 
 </section>
 
@@ -179,48 +172,52 @@
       
       	<div class="span4"></div>
         	<div class="span4">
-        		<h2 class="center-block">Last 24 Hours</h2>
+        		<h2 class="center-block">Last 7 Day</h2>
         	</div>
         <div class="span4"></div>
+        
       </div>
       
       <div class="row featurette">
+
         <div class="col-md-6">
-			        
+			<img style="margin-top:5px;" class="featurette-image img-responsive" src="${pageContext.request.contextPath}/draw/T/7/700/500" alt="Temperature"/>        
 		</div>
         
         
         <div class="col-md-6">
-			<img style="margin-top:5px;" class="featurette-image img-responsive" src="http://meteo.marcoberri.it/charts/t24.jpg" alt=""/>        
+			<img style="margin-top:5px;" class="featurette-image img-responsive" src="${pageContext.request.contextPath}/draw/H/7/700/500" alt="Humidity"/>        
 		</div>
+		
       </div>
 
 
 
       <div class="row featurette">
+
         <div class="col-md-6">
-			       <img style="margin-top:5px;" class="featurette-image img-responsive" src="http://meteo.marcoberri.it/charts/t24.jpg" alt=""/>
+			<img style="margin-top:5px;" class="featurette-image img-responsive" src="${pageContext.request.contextPath}/draw/PRESS/7/700/500" alt="Pressure last 7 day"/>        
 		</div>
         
         
         <div class="col-md-6">
-			<img style="margin-top:5px;" class="featurette-image img-responsive" src="http://meteo.marcoberri.it/charts/t24.jpg" alt=""/>        
+			<img style="margin-top:5px;" class="featurette-image img-responsive" src="${pageContext.request.contextPath}/draw/WC/7/700/500" alt="Wind Chill last 7 day"/>        
 		</div>
       </div>
 
 
       <div class="row featurette">
         <div class="col-md-6">
-			       <img style="margin-top:5px;" class="featurette-image img-responsive" src="http://meteo.marcoberri.it/charts/t24.jpg" alt=""/>
+			<img style="margin-top:5px;" class="featurette-image img-responsive" src="${pageContext.request.contextPath}/draw/WS/7/700/500" alt="Wind Speed last 7 day"/>        
 		</div>
         
         
         <div class="col-md-6">
-			<img style="margin-top:5px;" class="featurette-image img-responsive" src="http://meteo.marcoberri.it/charts/t24.jpg" alt=""/>        
+        
 		</div>
       </div>
       
-	<p class="pull-right"><a href="#" title="Torna all'inizio della pagina">Torna su</a></p>
+	<p class="pull-right"><a href="#" title="Top Page">Top</a></p>
 
 </section>
 
@@ -229,6 +226,136 @@
  <hr class="featurette-divider">
 
 
+
+
+
+
+
+
+<section id="30d">
+
+      <!-- START THE FEATURETTES -->
+      <div class="row featurette">
+      
+      	<div class="span4"></div>
+        	<div class="span4">
+        		<h2 class="center-block">Last 30 Day</h2>
+        	</div>
+        <div class="span4"></div>
+        
+      </div>
+      
+      <div class="row featurette">
+
+        <div class="col-md-6">
+			<img style="margin-top:5px;" class="featurette-image img-responsive" src="${pageContext.request.contextPath}/draw/T/30/700/500" alt="Temperature"/>        
+		</div>
+        
+        
+        <div class="col-md-6">
+			<img style="margin-top:5px;" class="featurette-image img-responsive" src="${pageContext.request.contextPath}/draw/H/30/700/500" alt="Humidity"/>        
+		</div>
+		
+      </div>
+
+
+
+      <div class="row featurette">
+
+        <div class="col-md-6">
+			<img style="margin-top:5px;" class="featurette-image img-responsive" src="${pageContext.request.contextPath}/draw/PRESS/30/700/500" alt="Pressure last 7 day"/>        
+		</div>
+        
+        
+        <div class="col-md-6">
+			<img style="margin-top:5px;" class="featurette-image img-responsive" src="${pageContext.request.contextPath}/draw/WC/30/700/500" alt="Wind Chill last 7 day"/>        
+		</div>
+      </div>
+
+
+      <div class="row featurette">
+        <div class="col-md-6">
+			<img style="margin-top:5px;" class="featurette-image img-responsive" src="${pageContext.request.contextPath}/draw/WS/30/700/500" alt="Wind Speed last 7 day"/>        
+		</div>
+        
+        
+        <div class="col-md-6">
+        
+		</div>
+      </div>
+      
+	<p class="pull-right"><a href="#" title="Top Page">Top</a></p>
+
+</section>
+
+
+
+ <hr class="featurette-divider">
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+<section id="365d">
+
+      <!-- START THE FEATURETTES -->
+      <div class="row featurette">
+      
+      	<div class="span4"></div>
+        	<div class="span4">
+        		<h2 class="center-block">Last 365 Day</h2>
+        	</div>
+        <div class="span4"></div>
+        
+      </div>
+      
+      <div class="row featurette">
+        <div class="col-md-12">
+			<img style="margin-top:5px;" class="featurette-image img-responsive" src="${pageContext.request.contextPath}/draw/T/365/1200/500" alt="Temperature last 365 day"/>        
+		</div>
+      </div>
+
+      <div class="row featurette">
+        <div class="col-md-12">
+			<img style="margin-top:5px;" class="featurette-image img-responsive" src="${pageContext.request.contextPath}/draw/H/365/1200/500" alt="Humidity last 365 day"/>        
+		</div>
+      </div>
+
+
+      <div class="row featurette">
+        <div class="col-md-12">
+			<img style="margin-top:5px;" class="featurette-image img-responsive" src="${pageContext.request.contextPath}/draw/PRESS/365/1200/500" alt="Pressure last 365 day"/>        
+		</div>
+      </div>
+
+
+      <div class="row featurette">
+        <div class="col-md-12">
+			<img style="margin-top:5px;" class="featurette-image img-responsive" src="${pageContext.request.contextPath}/draw/WC/365/1200/500" alt="Wind Chill last 365 day"/>        
+		</div>
+      </div>
+
+
+      <div class="row featurette">
+        <div class="col-md-12">
+			<img style="margin-top:5px;" class="featurette-image img-responsive" src="${pageContext.request.contextPath}/draw/WS/365/1200/500" alt="Wind Speed last 365 day"/>        
+		</div>
+     </div>
+      
+	<p class="pull-right"><a href="#" title="Top Page">Top</a></p>
+
+</section>
+
+
+
+ <hr class="featurette-divider">
+ 
+ 
+ 
 
     <footer>
       <div class="container">
@@ -285,14 +412,14 @@
       <div class="modal-body">
         <strong>Hardware Status</strong><br/>
 	
-	<strong>Last check </strong> : Mon Feb 08 2016 23:43:55 GMT+0100 (CET) <br/>
-	<strong>Battery Rain</strong> : <span style="color:red">0</span>   <br/>
-	<strong>Battery Wind</strong> : <span style="color:red">0</span>   <br/>
-	<strong>Battery 1</strong> :  <span style="color:green">1</span> <br/>
-	<strong>Battery 2</strong> :  <span style="color:green">1</span> <br/>
-	<strong>Battery 3</strong> :  <span style="color:green">1</span> <br/>
-	<strong>Battery 4</strong> : <span style="color:red">0</span>   <br/>
-	<strong>Battery 5</strong> :  <span style="color:green">1</span> <br/>
+	<strong>Last check </strong> : ${lastsys.ts} <br/>
+	<strong>Battery Rain</strong> : ${lastsys.batR}   <br/>
+	<strong>Battery Wind</strong> : ${lastsys.batW}   <br/>
+	<strong>Battery 1</strong> :  ${lastsys.bat1} <br/>
+	<strong>Battery 2</strong> :  ${lastsys.bat1} <br/>
+	<strong>Battery 3</strong> :  ${lastsys.bat3} <br/>
+	<strong>Battery 4</strong> : ${lastsys.bat4}   <br/>
+	<strong>Battery 5</strong> :  ${lastsys.bat5} <br/>
 
 <br/>
 <br/>

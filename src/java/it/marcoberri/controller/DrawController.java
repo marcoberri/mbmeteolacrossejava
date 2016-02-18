@@ -1,38 +1,51 @@
 package it.marcoberri.controller;
 
+import static org.springframework.data.mongodb.core.query.Criteria.where;
+import static org.springframework.data.mongodb.core.query.Query.query;
+
 import java.awt.Color;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartRenderingInfo;
 import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.DateAxis;
 import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.title.TextTitle;
 import org.jfree.data.time.Hour;
 import org.jfree.data.time.Second;
 import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
+import org.jfree.ui.RectangleEdge;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.gridfs.GridFsOperations;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.mongodb.BasicDBObject;
+import com.mongodb.gridfs.GridFSDBFile;
+
+import it.marcoberri.helper.PathConstants;
 import it.marcoberri.model.MaxMinData;
 import it.marcoberri.model.Raw;
 import it.marcoberri.repositories.MaxMinDataRepository;
 import it.marcoberri.repositories.RawRepository;
-import it.marcpberri.helper.PathConstants;
 
 @Controller
 @RequestMapping("/draw")
@@ -43,6 +56,9 @@ public class DrawController {
 
 	@Autowired
 	private MaxMinDataRepository maxMinDataRepository;
+
+	@Autowired
+	private GridFsOperations operations;
 
 	/**
 	 * 
@@ -59,6 +75,45 @@ public class DrawController {
 	@RequestMapping(value = "/{" + PathConstants.PARAM_FILTER_TYPE + "}/{" + PathConstants.PARAM_FILTER_FROM_DAY + "}/{"
 			+ PathConstants.PARAM_SIZE_X + "}/{" + PathConstants.PARAM_SIZE_Y + "}", method = RequestMethod.GET)
 	public void drawChart(@PathVariable(value = PathConstants.PARAM_FILTER_FROM_DAY) int dayFirst, @PathVariable(value = PathConstants.PARAM_FILTER_TYPE) String type, @PathVariable(value = PathConstants.PARAM_SIZE_X) int x, @PathVariable(value = PathConstants.PARAM_SIZE_Y) int y, HttpServletResponse resp) {
+
+		boolean cache = false;
+
+		if (dayFirst >= 7) {
+			cache = true;
+		}
+
+		if (cache) {
+			// verifico se esiste in cache
+			Calendar c = Calendar.getInstance();
+			c.add(Calendar.DATE, -dayFirst);
+			final Date datePre = c.getTime();
+
+			GridFSDBFile fileCache = operations.findOne(query(where("metadata.type").is(type).and("metadata.dayFirst")
+					.is(dayFirst).and("metadata.x").is(x).and("metadata.y").is(y).and("metadata.ts").gte(datePre)));
+
+			if (fileCache != null) {
+				// lo tiro fuori e lo servo altrimenti pulisco quelli cecchi e
+				// proseguo
+
+				resp.reset();
+				resp.setContentType(MediaType.IMAGE_PNG_VALUE);
+				try {
+					IOUtils.copy(fileCache.getInputStream(), resp.getOutputStream());
+					resp.flushBuffer();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+				return;
+
+			} else {
+				// se il file è nullo pulisco
+				operations.delete(query(where("metadata.type").is(type).and("metadata.dayFirst").is(dayFirst).and(
+						"metadata.x").is(x).and("metadata.y").is(y)));
+			}
+
+		}
 
 		final Raw rawLast = rawRepository.findFirstByOrderByTsDesc();
 
@@ -143,7 +198,6 @@ public class DrawController {
 		if (dayFirst > 1 && dayFirst < 60) {
 			for (String date2 : dateForMaxAndMin) {
 
-
 				MaxMinData dataLoad = maxMinDataRepository.findByTsOrderByTs(date2);
 
 				if (dataLoad == null)
@@ -206,16 +260,16 @@ public class DrawController {
 		title += " last " + dayFirst + " days";
 
 		JFreeChart chart = ChartFactory.createTimeSeriesChart(
-				title, // title
-				"Date", // x-axis label
-				unity, // y-axis label
-				dataset, // data
-				false, // create legend?
-				false, // generate tooltips?
-				false // generate URLs?
-		);
+				title,
+				null,
+				unity,
+				dataset,
+				false,
+				false,
+				false);
 
 		chart.setBackgroundPaint(Color.white);
+		chart.addSubtitle(getLeggendDate());
 
 		final XYPlot plot = (XYPlot) chart.getPlot();
 		plot.setBackgroundPaint(Color.lightGray);
@@ -228,17 +282,46 @@ public class DrawController {
 		axis.setDateFormatOverride(new SimpleDateFormat("dd-MM-yyyy hh:mm"));
 		axis.setVerticalTickLabels(true);
 
+		File file = null;
+
 		try {
+
+			file = File.createTempFile("tmp", ".png");
 
 			resp.reset();
 			resp.setContentType(MediaType.IMAGE_PNG_VALUE);
+
 			ChartUtilities.writeChartAsPNG(resp.getOutputStream(), chart, x, y, new ChartRenderingInfo());
+
+			if (cache) {
+				ChartUtilities.saveChartAsPNG(file, chart, x, y);
+
+				final BasicDBObject obj = new BasicDBObject();
+				obj.append("type", type);
+				obj.append("dayFirst", dayFirst);
+				obj.append("x", x);
+				obj.append("y", y);
+				obj.append("ts", new Date());
+
+				operations.store(new FileInputStream(file.toString()), file.toString(), MediaType.IMAGE_PNG_VALUE, obj);
+			}
 			resp.flushBuffer();
+
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} finally {
+			if (file != null)
+				file.deleteOnExit();
+
 		}
 
 	}
 
+	private TextTitle getLeggendDate() {
+		SimpleDateFormat sdfHourDay = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+		final TextTitle legendText = new TextTitle(sdfHourDay.format(new Date()));
+		legendText.setPosition(RectangleEdge.RIGHT);
+		legendText.setFont(new java.awt.Font("SansSerif", java.awt.Font.ITALIC, 12));
+		return legendText;
+
+	}
 }

@@ -25,10 +25,10 @@
 
 
 
-    <context:property-placeholder location="classpath:mongo.properties" />
- 
+	<context:property-placeholder location="classpath:mongo.properties" />
+
 	<context:component-scan base-package="it.marcoberri" />
-	 <context:annotation-config/>
+	<context:annotation-config />
 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -51,16 +51,26 @@
 			</bean>
 		</property>
 	</bean>
-	
-	<mongo:repositories base-package="it.marcoberri.repositories"/>
-	
-	<mongo:mongo host="${mongo.db.server}" port="${mongo.db.port}"/>
 
-	<mongo:db-factory dbname="${mongo.db.name}" mongo-ref="mongo"/>
+	<mongo:repositories base-package="it.marcoberri.repositories" />
+
+	<mongo:mongo host="${mongo.db.server}" port="${mongo.db.port}" />
+
+	<mongo:db-factory dbname="${mongo.db.name}" mongo-ref="mongo"
+		id="mongoDbFactory" />
+
+	<mongo:mapping-converter id="converter" />
+
+	<bean class="org.springframework.data.mongodb.gridfs.GridFsTemplate">
+		<constructor-arg ref="mongoDbFactory" />
+		<constructor-arg ref="converter" />
+	</bean>
+
+
 
 	<!-- MongoTemplate for connecting and quering the documents in the database -->
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
-		<constructor-arg ref="mongo"/>
+		<constructor-arg ref="mongo" />
 		<constructor-arg name="databaseName" value="${mongo.db.name}" />
 	</bean>
 

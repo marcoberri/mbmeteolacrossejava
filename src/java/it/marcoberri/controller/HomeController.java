@@ -25,7 +25,6 @@ public class HomeController {
 	public String home(ModelMap model) {
 		final Raw rawLast = rawRepository.findFirstByOrderByTsDesc();
 		final SystemData sysLast = sysRepository.findFirstByOrderByTsDesc();
-		System.out.println(sysLast);
 		model.addAttribute("last", rawLast);
 		model.addAttribute("lastsys", sysLast);
 		return "index";

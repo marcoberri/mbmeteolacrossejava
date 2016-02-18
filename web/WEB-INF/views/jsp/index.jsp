@@ -30,11 +30,10 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#">Meteo Station Farnese A1</a>
+              <a class="navbar-brand" href="${pageContext.request.contextPath}/">Meteo Station Farnese A1</a>
             </div>
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-                <li class="active"><a href="${pageContext.request.contextPath}/">Home</a></li>
                 <li><a href="#24h">24 H</a></li>
                 <li><a href="#7d">7 Day</a></li>
                 <li><a href="#30d">30 Day</a></li>

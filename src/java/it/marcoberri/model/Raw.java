@@ -16,8 +16,8 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-import it.marcpberri.helper.CustomObjectIdDeserializer;
-import it.marcpberri.helper.CustomObjectIdSerializer;
+import it.marcoberri.helper.CustomObjectIdDeserializer;
+import it.marcoberri.helper.CustomObjectIdSerializer;
 
 @Document(collection = "rawdata")
 @JsonInclude(Include.NON_NULL)

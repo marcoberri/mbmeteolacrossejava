@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import it.marcoberri.repositories.RawRepository;
 
 @Controller
-@RequestMapping("/rest")
+@RequestMapping("/data")
 public class RestController {
 
 	@Autowired

@@ -38,6 +38,7 @@
                 <li><a href="#7d">7 Day</a></li>
                 <li><a href="#30d">30 Day</a></li>
                 <li><a href="#365d">365 Day</a></li>
+                <li><a href="${pageContext.request.contextPath}/archive">Archive</a></li>
                 <li><a href="#" onClick="$('#statusModal').modal('show')">Status</a></li>
                 <li><a href="#" onClick="$('#aboutModal').modal('show')">About</a></li>
               </ul>

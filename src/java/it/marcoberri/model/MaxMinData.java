@@ -23,6 +23,7 @@ public class MaxMinData implements Serializable {
 	private String id;
 
 	@Indexed
+	@Field(value = "ts")
 	private String ts;
 
 	@Field(value = "T1MinDay")

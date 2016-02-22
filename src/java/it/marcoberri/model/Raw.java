@@ -58,8 +58,9 @@ public class Raw implements Serializable {
 	@Field(value = "RC")
 	private Float rc;
 
-	
+	@Field(value = "ts")
 	@DateTimeFormat(iso=ISO.DATE_TIME)
+	@Indexed
 	private Date ts;
 
 	

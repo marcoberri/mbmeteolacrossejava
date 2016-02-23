@@ -79,7 +79,6 @@
 
 
 			<c:forEach items="${dates}" var="date">
-
 				<div class="row featurette">
 					<div class="col-md-12">
 						<img style="margin-top: 5px;"

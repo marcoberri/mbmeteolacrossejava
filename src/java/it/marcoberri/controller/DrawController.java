@@ -3,6 +3,7 @@ package it.marcoberri.controller;
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 import static org.springframework.data.mongodb.core.query.Query.query;
 
+
 import java.awt.Color;
 import java.io.File;
 import java.io.FileInputStream;
@@ -33,6 +34,9 @@ import org.jfree.ui.RectangleEdge;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.aggregation.Fields;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.gridfs.GridFsOperations;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -61,6 +65,9 @@ public class DrawController {
 
 	@Autowired
 	private GridFsOperations operations;
+
+	@Autowired
+	private MongoTemplate mongoTemplate;
 
 	@RequestMapping(value = "/archive/{"
 			+ PathConstants.PARAM_FILTER_TYPE
@@ -95,10 +102,16 @@ public class DrawController {
 
 		final TimeSeries s1 = new TimeSeries("Series " + type);
 		Float pre = 0f;
-		Sort sort = new Sort(Direction.DESC, "ts");
-		final List<Raw> resultList = rawRepository.findAll(sort);
+		
+		Query q = new Query();
+		
+		q.fields().include(getFieldName(type)).include("ts").include("tsMillis");
+		q.with(new Sort(Direction.DESC, "ts"));
+		
+		final List<Raw> resultList = mongoTemplate.find(q, Raw.class);
 		for (Raw r : resultList) {
 
+		
 			if (r.getTs() == null)
 				continue;
 
@@ -337,7 +350,6 @@ public class DrawController {
 
 			if (type.equals("T")) {
 
-
 				if (r.getT1() == null || r.getT1().floatValue() == pre.floatValue()) {
 					continue;
 				}
@@ -533,5 +545,22 @@ public class DrawController {
 		legendText.setFont(new java.awt.Font("SansSerif", java.awt.Font.ITALIC, 12));
 		return legendText;
 
+	}
+	
+	private String getFieldName(String type){
+		
+		
+		if (type.equals("T")) {
+
+			return "t1";
+		} else
+
+		if (type.equals("H")) {
+			return "h1";
+		} 
+			return type;
+
+
+		
 	}
 }

@@ -103,8 +103,7 @@ public class DrawController {
 		final TimeSeries s1 = new TimeSeries("Series " + type);
 		Float pre = 0f;
 		
-		Query q = new Query();
-		
+		final Query q = new Query();
 		q.fields().include(getFieldName(type)).include("ts").include("tsMillis");
 		q.with(new Sort(Direction.DESC, "ts"));
 		
@@ -332,7 +331,16 @@ public class DrawController {
 
 		long fromDateMillis = cal.getTimeInMillis();
 
-		final List<Raw> resultList = rawRepository.findByTsMillisGreaterThan(fromDateMillis, sort);
+		
+		final Query q = new Query();
+		q.fields().include(getFieldName(type)).include("ts").include("tsMillis");
+		q.addCriteria(where("tsMillis").gte(fromDateMillis));
+		q.with(new Sort(Direction.DESC, "ts"));
+		
+		System.out.println(q);
+		final List<Raw> resultList = mongoTemplate.find(q, Raw.class);
+		
+		//final List<Raw> resultList = rawRepository.findByTsMillisGreaterThan(fromDateMillis, sort);
 
 		final List<String> dateForMaxAndMin = new ArrayList<String>();
 
